@@ -20,3 +20,4 @@ So I created CryptoTicker as a ticker that supports a hot toggle between CAD and
 ### APIs Used
 
 1. polygon.io (https://polygon.io/docs/get_v1_last_crypto__from___to__anchor)
+2. https://developers.coinbase.com/api/v2#authentication
