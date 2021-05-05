@@ -1,6 +1,6 @@
 ### CryptoTicker
 
-displays the prices of various top performing cryptocurrencies
+Displays the prices of various top performing cryptocurrencies
 
 1. Bitcoin
 2. Ethereum
