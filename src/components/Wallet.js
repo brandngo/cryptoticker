@@ -1,10 +1,10 @@
 import React from 'react';
-import {Accordion, Card, Table} from 'react-bootstrap';
+import {Accordion, Card, Table, Button} from 'react-bootstrap';
 
 function Wallet() {
   
 
-  render (
+  return (
     <Accordion>
       <Card>
         <Card.Header>
@@ -27,3 +27,5 @@ function Wallet() {
   );
 
 }
+
+export default Wallet;
