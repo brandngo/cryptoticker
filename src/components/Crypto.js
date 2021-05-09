@@ -1,56 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { setAsyncInterval, clearAsyncInterval } from '../util/setAsyncInterval';
+import numStringRound from '../util/numStringRound';
 
 function Crypto(props) {
   const [value, setValue] = useState(0);
 
-  /*
-  useEffect(() => {
-    const apiUrl = 'https://api.coinbase.com/v2/exchange-rates?currency=' + props.title;
-    fetch(apiUrl)
-    .then((res) => res.json())
-    .then((data) => {
-      setValue(data.rates["USD"]);
-    });
-
-  }, []);
-
-  */
-
   const title = props.title;
+
+  useEffect(() => {
+    setAsyncInterval(async () => {
+      findPrice(props.title);
+      const promise = new Promise((resolve) => {
+        setTimeout(resolve('all done'), 3000);
+      });
+      await promise;
+    }, 5000);
+  });
+  
+  
   const findPrice = async (title) => {
     const apiUrl = 'https://api.coinbase.com/v2/exchange-rates?currency=' + title;
-    let dataObj = [];
-    fetch(apiUrl)
+    await fetch(apiUrl)
     .then((res) => res.json())
-    .then((data) => (dataObj = data));
-    //let data1 = JSON.parse(JSON.stringify(dataObj));
-    await setValue(dataObj.currency);
-    /*
-    if (dataObj.hasOwnProperty('rates')) {
-      console.log(dataObj.rates);
-
-    } else {
-      console.log("err");
-
-    }
-    */
+    .then((data) => {
+      setValue(numStringRound(data.data.rates["USD"], 2));
+    });
   }
-
-  //setInterval( , 1000);
 
   return (
     <div>
-      <Container>
-        <Row>
-          <h1>{title}</h1>
-        </Row>
-        <Row>
-          <h2>{value}</h2>
-          <Button onClick={() => findPrice(title)}>Get Price of BTC</Button>
-        </Row>
-
-      </Container>
+      <Card>
+        <Card.Body>
+          <Card.Title>{title}</Card.Title>
+          <Card.Text>{value}</Card.Text>
+        </Card.Body>
+      </Card>
     </div>
   );
 }
