@@ -4,8 +4,8 @@ import {ButtonGroup, ToggleButton} from 'react-bootstrap';
 function CurrencyHotSwap({ currentCurrency, changeCurrency }) {
 
   const radios = [
-    { name: 'USD', value: 'usd' },
-    { name: 'CAD', value: 'cad' },
+    { name: 'USD', value: 'USD' },
+    { name: 'CAD', value: 'CAD' },
   ];
 
   return (

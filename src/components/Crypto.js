@@ -7,15 +7,26 @@ function Crypto(props) {
   const [value, setValue] = useState(0);
 
   const title = props.title;
+  const selectedCurrency = props.type;
 
   useEffect(() => {
     setAsyncInterval(async () => {
       findPrice(props.title);
+      if (props.type != ) {
+
+
+      }
+
+
       const promise = new Promise((resolve) => {
         setTimeout(resolve('all done'), 3000);
       });
       await promise;
     }, 5000);
+
+    return () => {
+      clearAsyncInterval(0);
+    }
   });
   
   
@@ -24,7 +35,8 @@ function Crypto(props) {
     await fetch(apiUrl)
     .then((res) => res.json())
     .then((data) => {
-      setValue(numStringRound(data.data.rates["USD"], 2));
+      console.log(selectedCurrency)
+      setValue(numStringRound(data.data.rates[selectedCurrency], 2));
     });
   }
 

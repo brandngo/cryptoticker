@@ -6,7 +6,7 @@ import Wallet from './components/Wallet.js';
 import CurrencyHotSwap from './components/CurrencyHotSwap.js';
 
 function App() {
-  const [ currency, setCurrency ] = useState("usd");
+  const [ currency, setCurrency ] = useState("USD");
 
 
   return (
@@ -14,16 +14,16 @@ function App() {
       <Jumbotron fluid><h1>Crypto Exchange</h1></Jumbotron>
       <CurrencyHotSwap 
         currentCurrency = {currency}
-        changeCurrency = {setCurrency}
+        changeCurrency = {setCurrency}  // running into an error where the price flickers
       />
       <Container>
         <Row>
-          <Col><Crypto title="BTC"></Crypto></Col>
-          <Col><Crypto title="ETH"></Crypto></Col>
-          <Col><Crypto title="XRP"></Crypto></Col>
+          <Col><Crypto title="BTC" type={currency}></Crypto></Col>
+          <Col><Crypto title="ETH" type={currency}></Crypto></Col>
+          <Col><Crypto title="XRP" type={currency}></Crypto></Col>
         </Row>
         <Row>
-          <Col><Crypto title="SAFEMOON"></Crypto></Col>
+          <Col><Crypto title="SAFEMOON" type={currency}></Crypto></Col>
           <Col></Col>
           <Col></Col>
         </Row>
