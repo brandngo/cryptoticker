@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Girassol&family=Inter:wght@300&family=Roboto+Mono:wght@500&display=swap');
+
 .App {
   text-align: center;
+  padding-bottom: 50px;
+  background:	#778899;
 }
 
 .App-logo {
